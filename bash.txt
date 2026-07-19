@@ -1,0 +1,31 @@
+1.Bash assignments cannot have spaces around =
+Wrong
+script = "$(realpath -- "$BASHSOURCE[0]")"
+script="$(realpath -- "$BASHSOURCE[0]")"
+
+2. indentation doesnt matter in Bash
+
+3. 0 means true in bash! 
+
+4. && does the same thing as if statements
+
+statement 1 && statement 2: only statements one success then run statement 2
+|| does the oppsite, 1 || 2, 2 runs when 1 fails
+
+nyk750@soar-9:~/BashBoom$ cd fol && echo "cant really cd"
+bash: cd: fol: No such file or directory
+nyk750@soar-9:~/BashBoom$ cd fol || echo "cant really cd"
+bash: cd: fol: No such file or directory
+cant really cd
+
+5. -- can prevent filename starts with - being interpretered as option,
+and should use "" around each $! but in echo it's optional!
+
+6. single quote in bash means treates everything as they were
+echo "number $i"
+if single quotes, it will print number $i!
+
+7.it has to be like this date +%Y-%m-%d_%H-%M-%S
+after: no sapce, and put a space after date
+
+8. if : [[ is stronger!]]
