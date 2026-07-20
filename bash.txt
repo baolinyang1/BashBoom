@@ -29,3 +29,18 @@ if single quotes, it will print number $i!
 after: no sapce, and put a space after date
 
 8. if : [[ is stronger!]]
+
+9. du -sh : s means summerize, -h means huamn readable; du -sh * | sort -h is good enough in most cases, but you can also filter with | tail -n 5!
+
+10. a sym link is a pointer that points to a file or dir, ln -s Target link_name; remove sym link doesnt affect the file,  but remove the file will make the sym link invalid
+for a file:
+for example i have a file at /home/1.txt after ln -s home/1.txt 1.txt(cant have this file/link exists beforehand), now cat/nano/modify affects both file.
+use ls -l to check: or use readlink symlink!
+lrwxrwxrwx 1 nyk750 nyk750    5 Jul 20 16:16 fake.sh -> rm.sh
+remove sym link: just rm fake.sh or sth like this
+
+for a dir:
+ln -s dir/ data
+then u can directly cd data, ls data!!!
+when remove, just remove the link: rm data
+
