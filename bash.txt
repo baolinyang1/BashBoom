@@ -2,6 +2,7 @@
 Wrong
 script = "$(realpath -- "$BASHSOURCE[0]")"
 script="$(realpath -- "$BASHSOURCE[0]")"
+for file name, better to do input="f1.txt" , works best for input="my file.txt"
 
 2. indentation doesnt matter in Bash
 
@@ -28,7 +29,8 @@ if single quotes, it will print number $i!
 7.it has to be like this date +%Y-%m-%d_%H-%M-%S
 after: no sapce, and put a space after date
 
-8. if : [[ is stronger!]]
+8. if : [[ is stronger!]], but only for: [[ ... ]] is used to test conditions such as string comparison or file existence. It does not run id as a command.
+if you are gonan run a command inside, dont use any [] or [[]]
 
 9. du -sh : s means summerize, -h means huamn readable; du -sh * | sort -h is good enough in most cases, but you can also filter with | tail -n 5!
 
@@ -44,3 +46,51 @@ ln -s dir/ data
 then u can directly cd data, ls data!!!
 when remove, just remove the link: rm data
 
+11. tr means translation, it reads from standard input, replace or remove chars
+syntax: tr set1 set2
+echo "hello" | tr 'a-z' 'A-Z' --> capitalize! === tr '[:lower:]' '[:upper:]'
+echo "banana" | tr a o ---> reaplce a with o!
+OR 
+nyk750@soar-9:~/BashBoom$ tr 'a-z' 'A-Z' < file.txt 
+WHAT
+ORnyk750@soar-9:~/BashBoom$ tr 'a-z' 'A-Z' <<< "what u talking about"
+WHAT U TALKING ABOUT
+
+SO IN BASH, THERE IS 3 types of input:
+command < file(or /dev/null or /dev/urandom) # input from a file/path
+command <<< "text"    # input from a string
+command1 | command2   # input from another command
+
+12. paste file1 file2 > mergedfile :
+combines file line by line, side by side!
+
+13. grep syntax:
+grep "pattern" file
+
+command | grep pattern: ps aux(all proc) | grep python 
+
+common options: -i ignore cases/ -n show line num / grep -r "depthmean" src/ recursive
+-v: prints the lines that does not match the pattern!
+-c: count match lines / -w: match a complete word
+grep "ERROR" file1 file2 : do multi files, output has it!
+Regular expression:
+grep "^ERROR" application.log : lines start with ERROR
+grep "\.tif$" filename.txt 
+notice here \. means .tif!
+and in bash, '^$' means empty line!!!
+
+Advanced:
+grep -E "ERROR|WARNING" application.log : match either one
+grep -R "[0-9]+" file.txt
+
+14. In bash, you can always combine flags! like -rin for grep!
+
+15. file descriptor: 0 std in /1 std out /2 std err
+command > file          # stdout only
+command 2> file         # stderr only
+command &> file         # stdout and stderr together
+command &>> file        # append stdout and stderr together
+
+and dont mix it with 2>&1!! put error into std output
+
+16. in bash, bith [] and [[]] needs space around them, exclude;!
