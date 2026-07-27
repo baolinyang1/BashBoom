@@ -31,6 +31,12 @@ after: no sapce, and put a space after date
 
 8. if : [[ is stronger!]], but only for: [[ ... ]] is used to test conditions such as string comparison 
 or file existence. It does not run id as a command.if you are gonan run a command inside, dont use any [] or [[]]
+if command; then
+    ...
+fi
+
+Notice here is a command! if you dont use [[]], u can use test
+
 
 9. du -sh : s means summerize, -h means huamn readable; du -sh * | sort -h is good enough in most cases, 
 but you can also filter with | tail -n 5!
@@ -97,3 +103,37 @@ command &>> file        # append stdout and stderr together
 and dont mix it with 2>&1!! put error into std output
 
 16. in bash, bith [] and [[]] needs space around them, exclude;
+
+17.$? means the execute status of last command, 0 means success!
+but for arithmetic: if (( 0 )); then echo "True" else echo "False" fi -> False
+
+18. Common User command
+id username 
+whoami
+#show groups user belong to
+groups username
+groups bob
+
+#List currently logged in users
+who / w
+
+sudo useradd username
+sudo useradd -m bob # create a user with home dir
+
+sudo passwd username #change user's pwd
+# lock/unlock a user
+sudo passwd -l/-u username
+or sudo usermod -L/-U username
+
+sudo usermod -aG group username
+sudo suerdel username
+#display all users
+getent passwd
+
+19. find the current loggin users:
+who | awk '{print $1}' | sort | uniq
+and sort -u === sort | uniq
+
+20. cut -d: -f2- 
+prints through f2 to teh end, -d means delimiter
+=== --delimiter=':'
