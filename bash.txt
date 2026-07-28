@@ -81,6 +81,7 @@ command | grep pattern: ps aux(all proc) | grep python
 common options: -i ignore cases/ -n show line num / grep -r "depthmean" src/ recursive
 -v: prints the lines that does not match the pattern!
 -c: count match lines / -w: match a complete word
+-m1: means first match
 grep "ERROR" file1 file2 : do multi files, output has it!
 Regular expression:
 grep "^ERROR" application.log : lines start with ERROR
@@ -137,3 +138,29 @@ and sort -u === sort | uniq
 20. cut -d: -f2- 
 prints through f2 to teh end, -d means delimiter
 === --delimiter=':'
+
+21. in bash, be careful when name / field has a space in it, use " "!!!
+grep "model name" /proc/cpuinfo
+grep model name /proc/cpuinfo --- Wrong!!!
+and the quotes itself is optional if the name/field has no space
+
+22. Inside Bash arithmetic expansion, variable names do not need $
+used_kn=$((total_kb - avail_kb))
+for +,-,*,/, use (()) for all!
+
+23. -F sets the separator
+loads=$(uptime | awk -F'load average: ' '{print $2}')
+awk -F'load average: ' '{print $2}'
+
+-F'load average: ' sets load average: as the separator.
+$1 is everything before that separator.
+$2 is everything after it.
+
+24. another for of loop:
+for i in {1..3}; do
+
+done
+
+25. awk syntax: THE pattern here mostly is which column which row!
+1. input | awk 'pattern { action }'
+2. awk 'pattern { action }' file
