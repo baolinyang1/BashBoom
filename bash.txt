@@ -164,3 +164,25 @@ done
 25. awk syntax: THE pattern here mostly is which column which row!
 1. input | awk 'pattern { action }'
 2. awk 'pattern { action }' file
+
+26. pgrep searches running processes and prints their process IDs:
+pgrep python, add -a to print extra info(display full command line), or -af
+-af -> search + display full command line, output: 18342 python train.py --epochs 100
+pgrep -u nyk750 owned by nyk750
+pgrep -x python exact name match
+pgrep -n python newest matching
+pgrep -o python oldest matching
+
+-> kill '$(pgrep -n python)'
+
+27.xxx | tr -dc '0-9' : tranalstions the given input and delete everything taht's not a digits
+
+28. in echo: you can have $variable === ${variable}, but {} is just more clear
+
+29. array in bash: use space to separate not comma
+hosts=('a' 'b' 'c')
+echo "${hosts[0]}"
+echo "${hosts[1]}"
+echo "${hosts[2]}"
+
+all echo "${hosts[@]}"
