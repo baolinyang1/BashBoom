@@ -186,3 +186,26 @@ echo "${hosts[1]}"
 echo "${hosts[2]}"
 
 all echo "${hosts[@]}"
+
+30. fold command!
+fold wraps long lines into shorter lines - does not cut chars but move them to next line
+
+echo "abcdefgihsnsbeybszi" | fold -w 5
+-> abcde ...
+
+or u can wrap a entire file - each line-wise
+fold -s -w 20 file.txt 
+fold file.txt (default 80 chars) 
+
+31. In nowadays bash:
+inside if and while conditions or between commands!
+and: &&
+or: ||
+not: !
+
+Notice for if and while command, u have to use [[ if you use those inside ]]
+or just [] those []!
+
+32. -z "$username" checks if the username is empty string
+-n "username" checcks if the username is NOTEMPTY! 
+if [ -n "$useranme" ] ... : then it means username is not empty!
