@@ -209,3 +209,6 @@ or just [] those []!
 32. -z "$username" checks if the username is empty string
 -n "username" checcks if the username is NOTEMPTY! 
 if [ -n "$useranme" ] ... : then it means username is not empty!
+
+33. In bash, these are effectively the same:
+command > /dev/null 2>&1 same as command &> /dev/null
