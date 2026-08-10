@@ -212,3 +212,12 @@ if [ -n "$useranme" ] ... : then it means username is not empty!
 
 33. In bash, these are effectively the same:
 command > /dev/null 2>&1 same as command &> /dev/null
+
+34. select is a special loop used to build a simple numbered menu automatically.
+syntax:
+select variable in item1 item2 item3; do
+    commands
+done
+
+inside a select loop, the variable name after select can be anything you choose, 
+but Bash automatically stores the user's raw input in the special variable REPLY.
