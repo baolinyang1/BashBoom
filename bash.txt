@@ -221,3 +221,20 @@ done
 
 inside a select loop, the variable name after select can be anything you choose, 
 but Bash automatically stores the user's raw input in the special variable REPLY.
+
+35. in bash \ can mean continue this command to the next line.
+tail -F "$logfile" | \
+while read -r line; do
+===
+tail -F "$logfile" | while read -r line; do
+
+36. for diff command in bash:
+0 → files are identical
+1 → files are different
+2+ → an error occurred
+
+37. -z can check whether a string is empty
+if [ -z "$string" ]; then
+    echo "$string is empty"
+else
+    echo "$string is not empty"
